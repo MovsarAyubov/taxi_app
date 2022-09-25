@@ -5,6 +5,7 @@ import 'package:taxi_service_imitation/cubit/driver_selection/driver_selection_c
 
 import 'package:taxi_service_imitation/cubit/taxi_app_cubit.dart';
 import 'package:taxi_service_imitation/cubit/taxi_app_state.dart';
+import 'package:taxi_service_imitation/routes/pass_data_routes.dart';
 import 'package:taxi_service_imitation/screens/order_confirmation.dart';
 
 class MyFloatingActionButton extends StatelessWidget {
@@ -31,15 +32,10 @@ class MyFloatingActionButton extends StatelessWidget {
           taxiAppCubit.setCostOfTrip();
         },
         builder: (context, state) {
-          taxiAppCubit.setCostOfTrip;
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 15),
             width: double.infinity,
-            child: taxiAppCubit.state.fromWhereField == "" ||
-                    taxiAppCubit.state.fromWhereField.split('').length < 5 ||
-                    taxiAppCubit.state.whereField.split('').length < 5 ||
-                    taxiAppCubit.state.whereField == "" ||
-                    taxiAppCubit.state.nameField == ""
+            child: taxiAppCubit.isAddressValid
                 ? const FloatingActionButton.extended(
                     backgroundColor: Color.fromARGB(255, 206, 203, 203),
                     extendedPadding: EdgeInsets.zero,
@@ -65,11 +61,11 @@ class MyFloatingActionButton extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: ((context) => OrderConfirmation(
-                                driverSelectionCubit: driverSelectionCubit,
-                                taxiAppCubit: taxiAppCubit,
-                              ))));
+                      PassDataRoutes.orderExample(
+                        context,
+                        driverSelectionCubit: driverSelectionCubit,
+                        taxiAppCubit: taxiAppCubit,
+                      );
                     },
                   ),
           );

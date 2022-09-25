@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:taxi_service_imitation/cubit/driver_selection/driver_selection_cubit.dart';
 import 'package:taxi_service_imitation/cubit/taxi_app_cubit.dart';
+import 'package:taxi_service_imitation/routes/pass_data_routes.dart';
 import 'package:taxi_service_imitation/screens/order_fulfillment_page.dart';
 import 'package:taxi_service_imitation/widgets/my_app_bar.dart';
 
@@ -126,11 +127,9 @@ class OrderInformation extends StatelessWidget {
             left: 190,
             child: GestureDetector(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: ((context) => OrderFulFillmentPage(
-                          taxiAppCubit: taxiAppCubit,
-                          driverSelectionCubit: driverSelectionCubit,
-                        ))));
+                PassDataRoutes.waiting(context,
+                    driverSelectionCubit: driverSelectionCubit,
+                    taxiAppCubit: taxiAppCubit);
                 driverSelectionCubit.driverSelection();
               },
               child: const Text(

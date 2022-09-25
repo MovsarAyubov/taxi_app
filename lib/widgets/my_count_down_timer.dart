@@ -23,17 +23,19 @@ class MyCountDownTimer extends StatelessWidget {
       children: [
         CircularCountDownTimer(
             onComplete: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => HomePage(
-                    driverSelectionCubit: driverSelectionCubit,
-                    taxiAppCubit: taxiAppCubit),
-              ));
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => HomePage(
+                        driverSelectionCubit: driverSelectionCubit,
+                        taxiAppCubit: taxiAppCubit),
+                  ),
+                  (route) => route.isFirst);
             },
             isReverse: true,
             strokeWidth: 10,
             width: 90,
             height: 90,
-            duration: 120,
+            duration: 10,
             fillColor: Theme.of(context).primaryColor,
             ringColor: Colors.white),
         const SizedBox(

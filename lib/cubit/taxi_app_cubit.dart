@@ -15,7 +15,6 @@ class TaxiAppCubit extends Cubit<TaxiAppState> {
   void setFromWhere({required String fromWhere}) {
     if (fromWhere != "") {
       emit(state.copyWith(fromWhereField: fromWhere));
-      print(state.fromWhereField);
     }
   }
 
@@ -57,5 +56,11 @@ class TaxiAppCubit extends Cubit<TaxiAppState> {
 
   orderReadiness() {
     emit(state.copyWith(orderIsReady: true));
+  }
+
+  bool get isAddressValid {
+    return state.fromWhereField.length < 5 ||
+        state.whereField.length < 5 ||
+        state.nameField.trim().isEmpty;
   }
 }

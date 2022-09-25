@@ -1,12 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:taxi_service_imitation/cubit/driver_selection/driver_selection_cubit.dart';
 import 'package:taxi_service_imitation/cubit/driver_selection/driver_selection_state.dart';
 import 'package:taxi_service_imitation/cubit/taxi_app_cubit.dart';
-import 'package:taxi_service_imitation/screens/home_page.dart';
 import 'package:taxi_service_imitation/widgets/buttons/simple_floating_action_button.dart';
 import 'package:taxi_service_imitation/widgets/driver_card.dart';
 import 'package:taxi_service_imitation/widgets/my_app_bar.dart';
